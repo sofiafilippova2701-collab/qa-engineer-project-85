@@ -1,1 +1,5 @@
-issues: []
+---
+reopened-issues:
+  - issue-url: "https://github.com/hexlet-codebattle/codebattle/issues/1254"
+    reason: |
+      Проблема
