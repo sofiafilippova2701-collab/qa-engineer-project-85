@@ -1,7 +1,6 @@
-reopened_issues:
-  - issue-url: "https://github.com/hexlet-codebattle/codebattle/issues/1254"
-    reason: |
-      После исправления бага с фильтром цены, ошибка вернулась в релизе v1.2.1.
-      Подтверждено на Chrome 128.
-    status: reopened
-    comments: Баг повторно проявился. Нужна более устойчивая проверка диапазона.
+- issue-url: "https://github.com/hexlet-codebattle/codebattle/issues/1254"
+  reason: |
+    После исправления бага с фильтром цены, ошибка вернулась в релизе v1.2.1.
+    Подтверждено на Chrome 128.
+  status: reopened
+  comments: Баг повторно проявился. Нужна более устойчивая проверка диапазона.
