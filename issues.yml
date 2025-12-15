@@ -1,5 +1,11 @@
----
-issues:
-  - url: "https://github.com/hexlet-codebattle/codebattle/issues/1254"
-  - url: "https://github.com/hexlet-codebattle/codebattle/issues/1255"
-  - url: "https://github.com/hexlet-codebattle/codebattle/issues/1256"
+- url: "https://github.com/hexlet-codebattle/codebattle/issues/1254"
+  comment: |
+    Задержка синхронизации превышает 500 мс.
+
+- url: "https://github.com/hexlet-codebattle/codebattle/issues/1255"
+  comment: |
+    При переподключении код не всегда восстанавливается. Проверено в Chrome и Firefox.
+
+- url: "https://github.com/hexlet-codebattle/codebattle/issues/1256"
+  comment: |
+    Пользователь не видит, какие тесты упали. Необходимо улучшить фидбэк при проверке.
