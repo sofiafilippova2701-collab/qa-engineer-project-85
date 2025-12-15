@@ -30,3 +30,16 @@
 - summary: |
     Проверка проверки решения задачи
   status: pass
+  test-report:
+  - test-case: "Проверка отображения товаров в каталоге"
+    status: pass
+    executor: "QA Engineer"
+    execution-date: "2025-04-05"
+    comments: "Все товары отображают название, рейтинг и цены корректно"
+
+  - test-case: "Проверка поиска по несуществующему товару"
+    status: fail
+    executor: "QA Engineer"
+    execution-date: "2025-04-05"
+    comments: "Сообщение 'Товары не найдены' не отображается. Баг №2105"
+
