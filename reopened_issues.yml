@@ -1,8 +1,2 @@
-- issue-url: "https://github.com/hexlet-codebattle/codebattle/issues/2211"
-  reason: |
-    Ошибка наложения элементов в мобильной версии была закрыта как исправленная, но при проверке в Chrome (DevTools, iPhone 12) проблема воспроизводится: 
-    - Редактор и чат перекрывают друг друга
-    - Появляется горизонтальный скролл
-    - Кнопки управления обрезаны
-    Создан новый issue для фиксации регрессии.
-  status: reopened
+issues:
+  - url: "https://github.com/hexlet-codebattle/codebattle/issues/2211"
