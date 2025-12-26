@@ -2,49 +2,90 @@ issues:
   - url: "https://github.com/hexlet-codebattle/codebattle/issues/1542"
     title: "High latency in real‑time code synchronization during pair battles"
     description: |
-      During pair programming battles, code updates from opponent are delayed by 2+ seconds (expected ≤500ms).
+      During pair programming battles, code updates from opponent are delayed by 2+ seconds (expected ≤500ms), which breaks the core interactive experience.
     steps_to_reproduce:
       - Start a pair battle with another user
       - Begin typing code in the editor
-      - Observe delay in opponent's code updates
+      - Observe delay in opponent's code updates (use stopwatch for measurement)
     environment:
       browser: "Chrome 128.0.6613.119 (x86_64)"
       os: "macOS 14.6.1 (Sonoma)"
       app_version: "babf5ed"
+      network: "Wi‑Fi (100 Mbps down/20 Mbps up)"
     evidence:
       - "screenshot-1-delay-visible.png"
       - "network-trace-websocket-latency.json"
+      - "performance-profile.json"
     priority: "high"
+    labels:
+      - "bug"
+      - "performance"
+      - "real‑time"
+    suggested_fix: |
+      1. Optimize WebSocket message batching
+      2. Implement client‑side debouncing for rapid keystrokes
+      3. Review server‑side event loop processing
 
   - url: "https://github.com/hexlet-codebattle/codebattle/issues/1543"
     title: "Mobile interface usability issues on small screens (≤320px)"
     description: |
-      On mobile devices with screen width ≤320px, the interface becomes unusable due to layout problems.
+      On mobile devices with screen width ≤320px, the interface becomes unusable due to:
+      - Horizontal scrolling in task lists
+      - Touch targets smaller than 44×44 px
+      - Overlapping UI elements
     steps_to_reproduce:
       - Open the app on a device with 320×480px resolution (or use Chrome DevTools mobile mode)
       - Navigate to the 'Tasks' section
-      - Attempt to tap interface elements
+      - Attempt to tap interface elements (filters, task cards)
+      - Switch to 'Profile' page and check layout
     environment:
       browser: "Safari Mobile 17.6"
       os: "iOS 17.6.1"
       app_version: "babf5ed"
+      device: "iPhone SE (1st generation)"
     evidence:
       - "screenshot-2-horizontal-scroll.png"
       - "screenshot-3-tiny-buttons.png"
+      - "responsive-breakpoint-test.mp4"
     priority: "high"
+    labels:
+      - "bug"
+      - "ui/ux"
+      - "mobile"
+    suggested_fix: |
+      1. Implement CSS media query for max‑width: 320px
+      2. Increase touch target sizes to minimum 44×44 px
+      3. Replace horizontal scroll with vertical stacking for task filters
 
   - url: "https://github.com/hexlet-codebattle/codebattle/issues/1544"
     title: "Server instability under 1000+ concurrent users"
     description: |
-      Under high load (≥1000 users), the system returns 502 Bad Gateway errors for 15% of requests.
+      Under high load (≥1000 users), the system returns 502 Bad Gateway errors for 15% of requests and exhibits:
+      - Increased response times (up to 8 s)
+      - Database connection timeouts
+      - Memory spikes on application servers
     steps_to_reproduce:
       - Run a load test with 1000 virtual users
       - Simulate simultaneous login attempts
       - Monitor response codes and latency
+      - Check server resource usage (CPU/RAM/connections)
     environment:
       test_tool: "Apache JMeter 5.6.3"
+      load_pattern: "ramp‑up 100 users/s to 1000 total"
       app_version: "babf5ed"
+      infrastructure: "AWS t3.medium instances (2x web, 1x db)"
     evidence:
       - "load-test-results.csv"
       - "server-error-logs-20251015.txt"
+      - "database-metrics.png"
+      - "cpu-ram-usage.png"
     priority: "critical"
+    labels:
+      - "bug"
+      - "performance"
+      - "scalability"
+    suggested_fix: |
+      1. Increase database connection pool size
+      2. Add caching layer for authenticated sessions
+      3. Implement auto‑scaling for web instances
+      4. Optimize slow database queries (identify via EXPLAIN ANALYZE)
