@@ -1,12 +1,50 @@
 issues:
-- url: "https://github.com/hexlet-codebattle/codebattle/issues/1254"
-  comment: |
-    Задержка синхронизации превышает 500 мс.
+  - url: "https://github.com/hexlet-codebattle/codebattle/issues/1542"
+    title: "High latency in real‑time code synchronization during pair battles"
+    description: |
+      During pair programming battles, code updates from opponent are delayed by 2+ seconds (expected ≤500ms).
+    steps_to_reproduce:
+      - Start a pair battle with another user
+      - Begin typing code in the editor
+      - Observe delay in opponent's code updates
+    environment:
+      browser: "Chrome 128.0.6613.119 (x86_64)"
+      os: "macOS 14.6.1 (Sonoma)"
+      app_version: "babf5ed"
+    evidence:
+      - "screenshot-1-delay-visible.png"
+      - "network-trace-websocket-latency.json"
+    priority: "high"
 
-- url: "https://github.com/hexlet-codebattle/codebattle/issues/1255"
-  comment: |
-    При переподключении код не всегда восстанавливается. Проверено в Chrome и Firefox.
+  - url: "https://github.com/hexlet-codebattle/codebattle/issues/1543"
+    title: "Mobile interface usability issues on small screens (≤320px)"
+    description: |
+      On mobile devices with screen width ≤320px, the interface becomes unusable due to layout problems.
+    steps_to_reproduce:
+      - Open the app on a device with 320×480px resolution (or use Chrome DevTools mobile mode)
+      - Navigate to the 'Tasks' section
+      - Attempt to tap interface elements
+    environment:
+      browser: "Safari Mobile 17.6"
+      os: "iOS 17.6.1"
+      app_version: "babf5ed"
+    evidence:
+      - "screenshot-2-horizontal-scroll.png"
+      - "screenshot-3-tiny-buttons.png"
+    priority: "high"
 
-- url: "https://github.com/hexlet-codebattle/codebattle/issues/1256"
-  comment: |
-    Пользователь не видит, какие тесты упали. Необходимо улучшить фидбэк при проверке.
+  - url: "https://github.com/hexlet-codebattle/codebattle/issues/1544"
+    title: "Server instability under 1000+ concurrent users"
+    description: |
+      Under high load (≥1000 users), the system returns 502 Bad Gateway errors for 15% of requests.
+    steps_to_reproduce:
+      - Run a load test with 1000 virtual users
+      - Simulate simultaneous login attempts
+      - Monitor response codes and latency
+    environment:
+      test_tool: "Apache JMeter 5.6.3"
+      app_version: "babf5ed"
+    evidence:
+      - "load-test-results.csv"
+      - "server-error-logs-20251015.txt"
+    priority: "critical"
